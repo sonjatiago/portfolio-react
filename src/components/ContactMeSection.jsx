@@ -61,7 +61,7 @@ const LandingSection = () => {
                   name="firstName"
                   {...formik.getFieldProps("firstName")}
                   placeholder="Enter your name"
-                  focusBorderColor="purple.500" // Customize focus color
+                  focusBorderColor="blue" // Customize focus color
                 />
                 <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
               </FormControl>
@@ -105,10 +105,10 @@ const LandingSection = () => {
               </FormControl>
               <Button
                 type="submit"
-                colorScheme="purple"
+                colorScheme="blue"
                 width="full"
                 isLoading={isLoading}
-                _hover={{ bg: "purple.600" }} // Optional: add hover effect
+                _hover={{ bg: "blue.600" }} // Optional: add hover effect
               >
                 Submit
               </Button>

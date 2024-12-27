@@ -12,23 +12,15 @@ import { Box, HStack } from "@chakra-ui/react";
 const socials = [
   {
     icon: faEnvelope,
-    url: "mailto: hello@pete.com",
+    url: "mailto: tiagoguimaraes1996@icloud.com",
   },
   {
     icon: faGithub,
-    url: "https://github.com/",
+    url: "https://github.com/sonjatiago",
   },
   {
     icon: faLinkedin,
-    url: "https://www.linkedin.com",
-  },
-  {
-    icon: faMedium,
-    url: "https://medium.com",
-  },
-  {
-    icon: faStackOverflow,
-    url: "https://stackoverflow.com",
+    url: "www.linkedin.com/in/tiago-guimaraes1996",
   },
 ];
 

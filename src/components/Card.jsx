@@ -1,37 +1,53 @@
-import { Heading, HStack, Image, Text, VStack, Box } from "@chakra-ui/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import { Box, Heading, Text, Button } from "@chakra-ui/react";
+import { useState } from "react";
 
-const Card = ({ title, description, imageSrc }) => {
-  // Implement the UI for the Card component according to the instructions.
-  // You should be able to implement the component with the elements imported above.
-  // Feel free to import other UI components from Chakra UI if you wish to.
+const Card = ({ title, description, imageSrc, websiteUrl }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div>
-      <HStack spacing={3}>
-        <Box
-          backgroundColor="white"
-          textColor="black"
-          rounded="3xl"
-          paddingBottom={5}
-        >
-          <VStack spacing={3}>
-            <Image src={imageSrc} alt={title} rounded="3xl" />
-            <Box paddingX={4}>
-              <Heading paddingY={3} size="md">
-                {title}
-              </Heading>
-              <Text>{description}</Text>
-              <HStack spacing={2}>
-                <Text fontWeight="bold">See More</Text>
-                <FontAwesomeIcon icon={faArrowRight} />
-              </HStack>
-            </Box>
-          </VStack>
-        </Box>
-      </HStack>
-    </div>
+    <Box
+      maxW="100%"
+      borderRadius="lg"
+      overflow="hidden"
+      bg="white"
+      position="relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Box position="relative">
+        <img src={imageSrc} alt={title} style={{ width: "100%" }} />
+        {isHovered && (
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            right="0"
+            bottom="0"
+            bg="rgba(0,0,0,0.7)"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            transition="all 0.3s"
+          >
+            <Button
+              as="a"
+              href={websiteUrl}
+              target="_blank"
+              colorScheme="blue"
+              size="lg"
+            >
+              Visit Website
+            </Button>
+          </Box>
+        )}
+      </Box>
+      <Box p={6}>
+        <Heading color="black" size="md" mb={2}>
+          {title}
+        </Heading>
+        <Text color="gray.600">{description}</Text>
+      </Box>
+    </Box>
   );
 };
 
