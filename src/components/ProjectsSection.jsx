@@ -19,11 +19,25 @@ const projects = [
     websiteUrl: "https://littlelemontallinn.netlify.app//",
   },
   {
-    title: "OKOA Gallery v1.0",
-    description: "A platform for Okoa Art Gallery, built with HTML, CSS, and JavaScript, showcasing artworks, artist details, and an interactive gallery. Highlights responsive design and user engagement.",
-    getImageSrc: () => require("../assets/img3.png"),
+    title: "Portfolio Website HTML v1.0",
+    description: "A portfolio website created in HTML, CSS and JavaScript.",
+    getImageSrc: () => require("../assets/img5.png"),
     type: "HTML Projects",
-    websiteUrl: "https://little-lemon-i27glbutf-tiagos-projects-f43babc9.vercel.app/",
+    websiteUrl: "https://htmlportfolio-tiago.netlify.app",
+  },
+  {
+    title: "Cursor Neon",
+    description: "A editable cursor neon, with colours and shapes.",
+    getImageSrc: () => require("../assets/img4.png"),
+    type: "Other Projects",
+    websiteUrl: "https://cursorneon.netlify.app//",
+  },
+  {
+    title: "BCocoon Kids",
+    description: "A React-based platform for a online baby clothes shop based in Portugal.",
+    getImageSrc: () => require("../assets/img3.png"),
+    type: "React Projects",
+    websiteUrl: "https://bcocoon.netlify.app/",
   },
 ];
 
