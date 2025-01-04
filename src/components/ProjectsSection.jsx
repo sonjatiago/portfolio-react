@@ -39,6 +39,13 @@ const projects = [
     type: "React Projects",
     websiteUrl: "https://bcocoon.netlify.app/",
   },
+  {
+    title: "MiguelAM Transportes",
+    description: "A React-based platform to a small logistics company.",
+    getImageSrc: () => require("../assets/img6.png"),
+    type: "React Projects",
+    websiteUrl: "https://miguelamtransportes.netlify.app/",
+  },
 ];
 
 const ProjectsSection = () => {
