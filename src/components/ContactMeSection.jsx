@@ -12,7 +12,7 @@ import {
   Textarea,
   VStack,
 } from "@chakra-ui/react";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 import FullScreenSection from "./FullScreenSection";
 import useSubmit from "../hooks/useSubmit";
 import { useAlertContext } from "../context/alertContext";
@@ -44,14 +44,14 @@ const LandingSection = () => {
     <FullScreenSection
       isDarkBackground
       backgroundColor="black"
-      py={16}
+      py={{ base: 8, sm: 16 }} // Adjust padding for smaller screens
       spacing={8}
     >
-      <VStack w="1024px" p={32} alignItems="flex-start">
-        <Heading as="h1" id="contactme-section" color="white">
+      <VStack w={{ base: "100%", sm: "80%", md: "1024px" }} p={{ base: 4, sm: 16 }} alignItems="flex-start">
+        <Heading as="h1" id="contactme-section" color="white" fontSize={{ base: "xl", sm: "2xl", md: "3xl" }}>
           Contact me
         </Heading>
-        <Box p={6} rounded="md" w="100%" bg="white" boxShadow="lg" color={"black"}>
+        <Box p={6} rounded="md" w="100%" bg="white" boxShadow="lg" color="black">
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4}>
               <FormControl isInvalid={formik.touched.firstName && formik.errors.firstName}>
@@ -62,9 +62,11 @@ const LandingSection = () => {
                   {...formik.getFieldProps("firstName")}
                   placeholder="Enter your name"
                   focusBorderColor="blue" // Customize focus color
+                  w="100%" // Ensure the input takes full width on small screens
                 />
                 <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
               </FormControl>
+
               <FormControl isInvalid={formik.touched.email && formik.errors.email}>
                 <FormLabel htmlFor="email">Email Address</FormLabel>
                 <Input
@@ -74,9 +76,11 @@ const LandingSection = () => {
                   {...formik.getFieldProps("email")}
                   placeholder="Enter your email"
                   focusBorderColor="purple.500"
+                  w="100%" // Ensure the input takes full width on small screens
                 />
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>
+
               <FormControl>
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
                 <Select
@@ -85,12 +89,14 @@ const LandingSection = () => {
                   {...formik.getFieldProps("type")}
                   focusBorderColor="purple.500"
                   color="black" // Change the text color of the options to black
+                  w="100%" // Ensure the select takes full width on small screens
                 >
                   <option value="hireMe">Freelance project proposal</option>
                   <option value="openSource">Open source consultancy session</option>
                   <option value="other">Other</option>
                 </Select>
               </FormControl>
+
               <FormControl isInvalid={formik.touched.comment && formik.errors.comment}>
                 <FormLabel htmlFor="comment">Your message</FormLabel>
                 <Textarea
@@ -100,9 +106,11 @@ const LandingSection = () => {
                   placeholder="Write your message here"
                   {...formik.getFieldProps("comment")}
                   focusBorderColor="purple.500"
+                  w="100%" // Ensure the textarea takes full width on small screens
                 />
                 <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
               </FormControl>
+
               <Button
                 type="submit"
                 colorScheme="blue"

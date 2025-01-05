@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -7,12 +7,12 @@ import {
   faMedium,
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack } from "@chakra-ui/react";
+import { Box, HStack, Link, useBreakpointValue } from "@chakra-ui/react";
 
 const socials = [
   {
     icon: faEnvelope,
-    url: "mailto: tiagoguimaraes1996@icloud.com",
+    url: "mailto:tiagoguimaraes1996@icloud.com",
   },
   {
     icon: faGithub,
@@ -36,38 +36,55 @@ const Header = () => {
     }
   };
 
+  // Responsive: Change social icons layout on small screens
+  const socialIconSize = useBreakpointValue({ base: "lg", md: "2x" });
+
   return (
     <Box
       position="fixed"
       top={0}
       left={0}
       right={0}
-      translateY={0}
-      transitionProperty="transform"
-      transitionDuration=".3s"
-      transitionTimingFunction="ease-in-out"
+      zIndex={1000} // Ensures header is always on top
+      transition="transform 0.3s ease-in-out"
       backgroundColor="#18181b"
+      width="100%"
     >
       <Box color="white" maxWidth="1280px" margin="0 auto">
         <HStack
-          px={16}
+          px={{ base: 4, md: 16 }}
           py={4}
           justifyContent="space-between"
           alignItems="center"
+          wrap="wrap"
         >
+          {/* Social Icons */}
           <nav>
-            <HStack spacing={6}>
-            {socials.map((social) => (
-              <a href={social.url}>
-                <FontAwesomeIcon icon={social.icon} size="2x"/> 
-              </a>
-            ))}
+            <HStack spacing={{ base: 4, md: 6 }} align="center" wrap="wrap">
+              {socials.map((social) => (
+                <Link href={social.url} key={social.url} isExternal>
+                  <FontAwesomeIcon
+                    icon={social.icon}
+                    size={socialIconSize}
+                  />
+                </Link>
+              ))}
             </HStack>
           </nav>
+
+          {/* Navigation Links */}
           <nav>
-            <HStack spacing={8}>
-              <a href="/#projects-section" onClick={()=>handleClick("projects")}>Projects</a>
-              <a href="/#contactme-section" onClick={()=>handleClick("contactme")}>Contact Me</a>
+            <HStack
+              spacing={{ base: 4, md: 8 }}
+              display={{ base: "none", md: "flex" }}
+              align="center"
+            >
+              <Link href="/#projects-section" onClick={() => handleClick("projects")}>
+                Projects
+              </Link>
+              <Link href="/#contactme-section" onClick={() => handleClick("contactme")}>
+                Contact Me
+              </Link>
             </HStack>
           </nav>
         </HStack>
@@ -75,4 +92,5 @@ const Header = () => {
     </Box>
   );
 };
+
 export default Header;

@@ -14,7 +14,7 @@ import { useRef } from "react";
 function Alert() {
   const { isOpen, type, message, onClose } = useAlertContext();
   const cancelRef = useRef();
-  const isSuccess = type === "success"
+  const isSuccess = type === "success";
 
   return (
     <AlertDialog
@@ -23,11 +23,24 @@ function Alert() {
       onClose={onClose}
     >
       <AlertDialogOverlay>
-        <AlertDialogContent py={4} backgroundColor={isSuccess ? '#81C784' : '#FF8A65'}>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+        <AlertDialogContent
+          py={{ base: 3, md: 4 }} // Adjust padding for smaller screens
+          px={{ base: 4, md: 6 }} // Responsive padding
+          backgroundColor={isSuccess ? '#81C784' : '#FF8A65'}
+          maxW={{ base: "90%", sm: "80%", md: "400px" }} // Responsive width
+          borderRadius="md" // Rounded corners for aesthetic appeal
+        >
+          <AlertDialogHeader
+            fontSize={{ base: "md", sm: "lg" }} // Adjust font size for small screens
+            fontWeight="bold"
+          >
             {isSuccess ? 'All good!' : 'Oops!'}
           </AlertDialogHeader>
-          <AlertDialogBody>{message}</AlertDialogBody>
+          <AlertDialogBody
+            fontSize={{ base: "sm", sm: "md" }} // Make text smaller on mobile for better fit
+          >
+            {message}
+          </AlertDialogBody>
         </AlertDialogContent>
       </AlertDialogOverlay>
     </AlertDialog>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FullScreenSection from "./FullScreenSection";
-import { Box, Heading, Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
+import { Box, Heading, Tabs, TabList, Tab, TabPanels, TabPanel, useBreakpointValue } from "@chakra-ui/react";
 import Card from "./Card";
 
 const projects = [
@@ -51,29 +51,40 @@ const projects = [
 const ProjectsSection = () => {
   const projectTypes = ["React Projects", "HTML Projects", "Other Projects"];
 
+  // Responsive column count for the grid
+  const gridTemplateColumns = useBreakpointValue({
+    base: "1fr",        // 1 column on small screens
+    sm: "1fr 1fr",      // 2 columns for small devices
+    md: "1fr 1fr 1fr",  // 3 columns for medium and larger devices
+  });
+
   return (
     <FullScreenSection
       backgroundColor="black"
       isDarkBackground
-      p={8}
+      p={{ base: 4, md: 8 }}  // Padding adjusted for smaller screens
       alignItems="center"
       spacing={8}
     >
-      <Heading as="h1" id="projects-section">
+      <Heading as="h1" id="projects-section" fontSize={{ base: "2xl", md: "3xl" }} textAlign="center" color="white">
         Featured Projects
       </Heading>
-      <Tabs variant="soft-rounded" colorScheme="blue" align="center" width="100%">
+
+      <Tabs variant="soft-rounded" colorScheme="blue" align="center" width="100%" isLazy>
         <TabList justifyContent="center">
           {projectTypes.map((type) => (
-            <Tab key={type}>{type}</Tab>
+            <Tab key={type} fontSize={{ base: "sm", md: "lg" }} _selected={{ color: "white", bg: "blue.400" }}>
+              {type}
+            </Tab>
           ))}
         </TabList>
+        
         <TabPanels>
           {projectTypes.map((type) => (
             <TabPanel key={type}>
               <Box
                 display="grid"
-                gridTemplateColumns="repeat(2,minmax(0,1fr))"
+                gridTemplateColumns={gridTemplateColumns}
                 gridGap={8}
               >
                 {projects
