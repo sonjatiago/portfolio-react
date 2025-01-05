@@ -6,7 +6,8 @@ const Card = ({ title, description, imageSrc, websiteUrl }) => {
 
   return (
     <Box
-      maxW={{ base: "100%", sm: "48%", md: "30%" }} // Adjust card width for different screen sizes
+      width="100%" // Ensure card takes the full width of its container
+      maxW="100%" // Ensure it expands to the maximum width in the grid container
       borderRadius="lg"
       overflow="hidden"
       bg="white"
@@ -15,7 +16,7 @@ const Card = ({ title, description, imageSrc, websiteUrl }) => {
       onMouseLeave={() => setIsHovered(false)}
       boxShadow="lg"
       transition="transform 0.2s ease-in-out"
-      _hover={{ transform: "scale(1.05)" }} // Optional: add a scaling effect when hovered
+      _hover={{ transform: "scale(1.05)" }} // Optional: scaling effect on hover
     >
       <Box position="relative">
         <img
@@ -23,7 +24,7 @@ const Card = ({ title, description, imageSrc, websiteUrl }) => {
           alt={title}
           style={{
             width: "100%",
-            height: "auto", // Make sure the image adjusts to the container's width
+            height: "auto", // Ensure image scales proportionally
           }}
         />
         {isHovered && (
@@ -44,14 +45,14 @@ const Card = ({ title, description, imageSrc, websiteUrl }) => {
               href={websiteUrl}
               target="_blank"
               colorScheme="blue"
-              size={{ base: "md", sm: "lg" }} // Adjust button size for mobile and larger screens
+              size={{ base: "md", sm: "lg" }} // Adjust button size for responsiveness
             >
               Visit Website
             </Button>
           </Box>
         )}
       </Box>
-      <Box p={{ base: 4, sm: 6 }} // Adjust padding for different screen sizes
+      <Box p={{ base: 4, sm: 6 }} // Padding adjusted for different screen sizes
         display="flex"
         flexDirection="column"
         justifyContent="space-between"

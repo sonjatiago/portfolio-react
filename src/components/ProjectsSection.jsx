@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FullScreenSection from "./FullScreenSection";
 import { Box, Heading, Tabs, TabList, Tab, TabPanels, TabPanel, useBreakpointValue } from "@chakra-ui/react";
 import Card from "./Card";
@@ -46,6 +46,13 @@ const projects = [
     type: "React Projects",
     websiteUrl: "https://miguelamtransportes.netlify.app/",
   },
+  {
+    title: "CardosoSarl Landscapes",
+    description: "A React-based platform to a landscaping company.",
+    getImageSrc: () => require("../assets/img7.png"),
+    type: "React Projects",
+    websiteUrl: "https://cardososarl.netlify.app/",
+  },
 ];
 
 const ProjectsSection = () => {
@@ -53,9 +60,10 @@ const ProjectsSection = () => {
 
   // Responsive column count for the grid
   const gridTemplateColumns = useBreakpointValue({
-    base: "1fr",        // 1 column on small screens
+    base: "1fr",        // 1 column on mobile
     sm: "1fr 1fr",      // 2 columns for small devices
-    md: "1fr 1fr 1fr",  // 3 columns for medium and larger devices
+    md: "1fr 1fr",      // 2 columns for medium devices (laptops)
+    lg: "1fr 1fr",      // 2 columns for large screens
   });
 
   return (
@@ -84,8 +92,9 @@ const ProjectsSection = () => {
             <TabPanel key={type}>
               <Box
                 display="grid"
-                gridTemplateColumns={gridTemplateColumns}
-                gridGap={8}
+                gridTemplateColumns={gridTemplateColumns}  // Ensures 2 columns on laptops and larger
+                gridGap={8}  // Space between grid items
+                width="100%"  // Full width of the container
               >
                 {projects
                   .filter((project) => project.type === type)
