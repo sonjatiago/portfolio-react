@@ -7,7 +7,7 @@ const projects = [
   {
     title: "TG Web Design",
     description: "A React-based platform for TG Web Design, featuring a portfolio, services, and contact form. Showcasing responsive design and modern web development.",
-    getImageSrc: () => require("../assets/img1.png"),
+    getImageSrc: () => require("../assets/img8.png"),
     type: "React Projects",
     websiteUrl: "http://tgwebdesign.netlify.app",
   },
