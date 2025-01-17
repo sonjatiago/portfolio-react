@@ -5,6 +5,13 @@ import Card from "./Card";
 
 const projects = [
   {
+    title: "TG Web Design",
+    description: "A React-based platform for TG Web Design, featuring a portfolio, services, and contact form. Showcasing responsive design and modern web development.",
+    getImageSrc: () => require("../assets/img1.png"),
+    type: "React Projects",
+    websiteUrl: "http://tgwebdesign.netlify.app",
+  },
+  {
     title: "OKOA Gallery v2.0",
     description: "A React-powered online art gallery with dynamic galleries, responsive design, and seamless navigation, showcasing modern web development skills.",
     getImageSrc: () => require("../assets/img1.png"),
@@ -16,7 +23,7 @@ const projects = [
     description: "A React-based platform for Little Lemon restaurant, featuring restaurant info, an online menu, and table booking. Showcasing responsive design and modern web development.",
     getImageSrc: () => require("../assets/img2.png"),
     type: "React Projects",
-    websiteUrl: "https://littlelemontallinn.netlify.app//",
+    websiteUrl: "https://littlelemontallinn.netlify.app",
   },
   {
     title: "Portfolio Website HTML v1.0",
